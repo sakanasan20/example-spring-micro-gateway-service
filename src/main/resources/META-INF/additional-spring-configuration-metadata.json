@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "tw.niq.example.token.secret",
+  "type": "java.lang.String",
+  "description": "A description for 'tw.niq.example.token.secret'"
+}]}
