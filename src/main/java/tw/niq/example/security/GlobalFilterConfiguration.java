@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.env.Environment;
 
 import reactor.core.publisher.Mono;
 
@@ -13,6 +14,16 @@ import reactor.core.publisher.Mono;
 public class GlobalFilterConfiguration {
 	
 	private final Logger logger = LoggerFactory.getLogger(GlobalFilterConfiguration.class);
+	
+	private final Environment environment;
+
+	public GlobalFilterConfiguration(Environment environment) {
+		this.environment = environment;
+		String currentGlobalConfig = environment.getProperty("tw.niq.example.config.global.active");
+		String currentConfig = environment.getProperty("tw.niq.example.config.active");
+		logger.info("currentGlobalConfig: " + currentGlobalConfig);
+		logger.info("currentConfig: " + currentConfig);
+	}
 
 	@Order(1)
 	@Bean
